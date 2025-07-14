@@ -13,3 +13,5 @@ RUST_LOG=info ./jito-shredstream-proxy shredstream \
     --desired-regions amsterdam,ny \
     --grpc-service-port 9999 \
     --dest-ip-ports 127.0.0.1:8002,65.109.87.35:8002
+
+ldd (Ubuntu GLIBC 2.39-0ubuntu8.4) 2.39
