@@ -1,20 +1,29 @@
-# Jito Shredstream Proxy
+# SolanaShredProxy
 
-ShredStream provides the lowest latency to shreds from leaders on Solana. 
+SolanaShredProxy is a Rust-based proxy for Solana ShredStream, providing ultra-low latency access to leader shreds on the Solana blockchain.
 
-See more at https://docs.jito.wtf/lowlatencytxnfeed/
+---
 
 ## Disclaimer
-Use this at your own risk.
+Use this software at your own risk. The developers do not assume responsibility for losses or network issues.  
 
-RUST_LOG=info ./jito-shredstream-proxy shredstream \
-    --block-engine-url https://mainnet.block-engine.jito.wtf \
-    --auth-keypair my_keypair.json \
-    --desired-regions amsterdam,ny \
-    --grpc-service-port 9999 \
-    --dest-ip-ports 127.0.0.1:8002,65.109.87.35:8002
+---
 
-ldd --version
+## Features
+- Low-latency access to leader shreds on Solana  
+- Configurable target regions for optimized connectivity  
+- gRPC service for downstream clients  
+- Authenticated access via keypair  
 
-ldd (Ubuntu GLIBC 2.35-0ubuntu3.8) 2.35
-ldd (Ubuntu GLIBC 2.39-0ubuntu8.4) 2.39
+---
+
+## Installation
+### Prerequisites
+- Rust (latest stable recommended)  
+- Linux system with GLIBC ≥ 2.35  
+
+### Build
+```bash
+git clone https://github.com/xerion0712/solanashredproxy.git
+cd solanashredproxy
+cargo build --release
