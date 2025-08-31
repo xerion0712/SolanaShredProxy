@@ -1,0 +1,26 @@
+# Solana ShredProxy Configuration
+
+# Solana RPC endpoint
+solana_rpc_url = "https://api.mainnet-beta.solana.com"
+
+# gRPC server address
+grpc_address = "127.0.0.1:50051"
+
+# Target regions for optimized connectivity
+target_regions = [
+    "us-east-1",
+    "us-west-1",
+    "eu-west-1"
+]
+
+# Authentication keypair path (optional)
+# keypair_path = "/path/to/keypair.json"
+
+# Log level: trace, debug, info, warn, error
+log_level = "info"
+
+# Connection timeout in seconds
+connection_timeout = 30
+
+# Maximum concurrent connections
+max_connections = 1000

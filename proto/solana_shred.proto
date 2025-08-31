@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package solana.shred;
+
+service ShredService {
+  // Stream shreds from the Solana network
+  rpc StreamShreds(ShredRequest) returns (stream ShredData);
+  
+  // Get specific shred by ID
+  rpc GetShred(ShredId) returns (ShredData);
+  
+  // Health check endpoint
+  rpc HealthCheck(HealthRequest) returns (HealthResponse);
+}
+
+message ShredRequest {
+  // Target regions for optimized connectivity
+  repeated string target_regions = 1;
+  
+  // Authentication token
+  string auth_token = 2;
+  
+  // Filter options
+  ShredFilter filter = 3;
+}
+
+message ShredFilter {
+  // Slot range
+  uint64 start_slot = 1;
+  uint64 end_slot = 2;
+  
+  // Shred type
+  ShredType shred_type = 3;
+}
+
+enum ShredType {
+  DATA = 0;
+  CODING = 1;
+  ALL = 2;
+}
+
+message ShredId {
+  uint64 slot = 1;
+  uint32 index = 2;
+  ShredType shred_type = 3;
+}
+
+message ShredData {
+  ShredId id = 1;
+  bytes data = 2;
+  uint64 timestamp = 3;
+  string leader_id = 4;
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  string status = 1;
+  uint64 uptime_seconds = 2;
+  uint64 processed_shreds = 3;
+}
